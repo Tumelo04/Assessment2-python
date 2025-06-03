@@ -1,4 +1,6 @@
-def calculate_rectangle_area(length, width):
+from collections import Counter
+
+def calculate_rectangle_area(length: int or float, width: int or float) -> int or float:
     """
     Calculates the area of a rectangle.
 
@@ -12,8 +14,10 @@ def calculate_rectangle_area(length, width):
 
     Learning Outcomes: Functions, Basic error handling (simple conditional check).
     """
-    # TODO: Implement this function
-    pass
+    if length < 0 or width < 0:
+        return 0
+    return length * width
+
 
 
 def sum_even_numbers(numbers_list: list)-> int:
@@ -29,8 +33,11 @@ def sum_even_numbers(numbers_list: list)-> int:
 
     Learning Outcomes: Functions, Basic loops (for), Processing data (list iteration, conditional).
     """
-    # TODO: Implement this function
-    pass
+    even_sum = 0
+    for number in numbers_list:
+        if number % 2 == 0:
+            even_sum += number
+    return even_sum
 
 
 def find_first_occurrence(data_list:list, target_value: any) -> int:
@@ -47,8 +54,10 @@ def find_first_occurrence(data_list:list, target_value: any) -> int:
 
     Learning Outcomes: Functions, Basic loops (for/while), Processing data (list search).
     """
-    # TODO: Implement this function
-    pass
+    for index, value in enumerate(data_list):
+        if value == target_value:
+            return index
+    return -1
 
 
 def safe_string_to_int(input_string: str) -> int or None:
@@ -64,8 +73,10 @@ def safe_string_to_int(input_string: str) -> int or None:
 
     Learning Outcomes: Functions, Basic error handling (try-except ValueError).
     """
-    # TODO: Implement this function
-    pass
+    try:
+        return int(input_string)
+    except ValueError:
+        return None
 
 
 def reverse_string_list_comprehension(text: str) -> str:
@@ -81,8 +92,7 @@ def reverse_string_list_comprehension(text: str) -> str:
 
     Learning Outcomes: Functions, Processing data (strings, potentially list comprehension or slicing), Simple algorithms.
     """
-    # TODO: Implement this function
-    pass
+    return text[::-1]
 
 def count_characters_above_threshold(text: str, threshold: int) -> int:
     """
@@ -102,5 +112,15 @@ def count_characters_above_threshold(text: str, threshold: int) -> int:
 
     Learning Outcomes: Functions, Basic loops, Processing data (strings, dictionaries/counters), Simple algorithms.
     """
-    # TODO: Implement this function
-    pass
+
+
+    # Convert text to lowercase to ensure case-insensitivity
+    text = text.lower()
+
+    # Count occurrences of each character
+    char_count = Counter(text)
+
+    # Count how many characters have a count greater than the threshold
+    count_above_threshold = sum(1 for count in char_count.values() if count > threshold)
+
+    return count_above_threshold
