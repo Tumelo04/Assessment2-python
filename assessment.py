@@ -56,7 +56,10 @@ def find_first_occurrence(data_list:list, target_value: any) -> int:
 
     Learning Outcomes: Functions, Basic loops (for/while), Processing data (list search).
     """
-    for target, value enumerate(data_list, target_value)
+    for index, value in enumerate(data_list):
+        if value == target_value:
+            return index
+    return -1
     
 
 
@@ -93,7 +96,7 @@ def reverse_string_list_comprehension(text: str) -> str:
 
     Learning Outcomes: Functions, Processing data (strings, potentially list comprehension or slicing), Simple algorithms.
     """
-    
+    return text[::-1]
 
 def count_characters_above_threshold(text: str, threshold: int) -> int:
     """
@@ -113,4 +116,8 @@ def count_characters_above_threshold(text: str, threshold: int) -> int:
 
     Learning Outcomes: Functions, Basic loops, Processing data (strings, dictionaries/counters), Simple algorithms.
     """
+    text = text.lower()
+    char_count = Counter(text)
+    above_threshold = sum(1 for count in char_count.values() if count > threshold)
+    return above_threshold
 
